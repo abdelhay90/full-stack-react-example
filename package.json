@@ -4,7 +4,7 @@
   "description": "full stack react demo",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm install -g cross-env @babel/cli",
+    "postinstall": "npm install -g cross-env @babel/cli ",
     "build": "webpack -p",
     "deploy": "npm run build && git commit -a -m deployment && git push heroku master",
     "dev": "webpack-dev-server --open",
@@ -17,7 +17,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "body-parser": "^1.19.0",
+    "@babel/core": "^7.4.5",
+    "@babel/node": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.4.4",
+    "babel-loader": "^8.0.6",
     "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
@@ -28,13 +33,6 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/node": "^7.4.5",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/register": "^7.4.4",
-    "babel-loader": "^8.0.6",
     "axios": "^0.18.0",
     "body-parser": "^1.19.0",
     "history": "^4.9.0",
