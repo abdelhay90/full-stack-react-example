@@ -4,11 +4,10 @@ import {ConnectedTaskList} from "./TaskList";
 
 export const Dashboard = ({groups}) => {
 	return (
-		<div>
-			<h2>Dashboard</h2>
+		<div className={'row'}>
 			{
 				groups.map((group) => (
-					<ConnectedTaskList key={group.id} id={group.id} name={group.name}/>
+					<ConnectedTaskList key={group.id} id={group.id} name={group.name} className={'col'}/>
 				))
 			}
 		</div>
