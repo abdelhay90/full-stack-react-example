@@ -7,7 +7,7 @@
     "build": "webpack -p",
     "deploy": "npm run build && git commit -a -m deployment && git push heroku master",
     "dev": "webpack-dev-server --open",
-    "postinstall": "npm install -g cross-env nodemon @babel/core @babel/node @babel/preset-env babel-loader",
+    "postinstall": "npm install -g cross-env nodemon",
     "server": "npx cross-env NODE_ENV=production babel-node src/server",
     "server-dev": "nodemon src/server --exec babel-node src/server",
     "start-dev": "concurrently \"npm run server-dev\" \"npm run dev\"",
@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
     "history": "^4.9.0",
     "md5": "^2.2.1",
     "mongodb": "^3.2.6",
