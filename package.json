@@ -4,6 +4,7 @@
   "description": "full stack react demo",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm install -g cross-env",
     "build": "webpack -p",
     "deploy": "npm run build && git commit -a -m deployment && git push heroku master",
     "dev": "webpack-dev-server --open",
