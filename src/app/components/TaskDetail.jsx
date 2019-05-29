@@ -36,7 +36,7 @@ export const TaskDetail = ({
 );
 
 function mapStateToProps(state, ownProps) {
-    let id = ownProps.match.match.params.id;
+    let id = ownProps.match.params.id;
 
     let task = state.tasks.find(task => task.id === id);
     let groups = state.groups;
@@ -49,7 +49,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch, ownProps) {
-    let id = ownProps.match.match.params.id;
+    let id = ownProps.match.params.id;
     return {
         setTaskCompletion(id, isComplete) {
             dispatch(mutations.setTaskCompletion(id, isComplete))

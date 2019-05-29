@@ -2,16 +2,19 @@ import {createStore, applyMiddleware, combineReducers} from 'redux';
 import {defaultState} from "../../server/defaultState";
 import {createLogger} from "redux-logger/src";
 import createSagaMiddleware from 'redux-saga';
-import * as sagas from './sagas.mock';
+import * as sagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 import * as mutations from './mutations'
+import {SET_STATE} from "./mutations";
 
 
 export const store = createStore(
     combineReducers({
-        tasks(tasks = defaultState.tasks, action) {
+        tasks(tasks = [], action) {
             switch (action.type) {
+                case SET_STATE:
+                    return action.state.tasks;
                 case mutations.CREATE_TASK:
                     return [...tasks,
                         {
@@ -39,14 +42,38 @@ export const store = createStore(
             }
             return tasks;
         },
-        comments(comments = defaultState.comments) {
+        comments(comments = [], action) {
+            switch (action.type) {
+                case SET_STATE:
+                    return action.state.comments;
+            }
             return comments;
         },
-        groups(groups = defaultState.groups) {
+        groups(groups = [], action) {
+            switch (action.type) {
+                case SET_STATE:
+                    return action.state.groups;
+            }
             return groups;
         },
-        users(users = defaultState.users) {
+        users(users = []) {
             return users;
+        },
+        session(userSession = defaultState.session || {}, action) {
+            let {type, authenticated, session} = action;
+            switch (type) {
+                case SET_STATE:
+                    return {
+                        ...userSession,
+                        id: action.state.session.id
+                    };
+                case mutations.REQUEST_AUTHENTICATE_USER:
+                    return {...userSession, authenticated: mutations.AUTHENTICATING};
+                case mutations.PROCESSING_AUTHENTICATE_USER:
+                    return {...userSession, authenticated};
+                default:
+                    return userSession;
+            }
         }
     }),
     applyMiddleware(createLogger(), sagaMiddleware)
