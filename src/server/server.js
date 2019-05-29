@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import {connectDB} from "./connect-db";
 import './initialize-db'
 import {authenticationRoute} from './authenticate';
-import {getTasks, updateTask, removeTask} from "./communicate-db";
+import {getTasks, updateTask, removeTask, addNewTask} from "./communicate-db";
 
 let port = process.env.PORT || 8888;
 
