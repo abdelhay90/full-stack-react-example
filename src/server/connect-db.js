@@ -8,13 +8,13 @@ export async function connectDB() {
     if (db) {
         return db;
     }
-    let client
+    let client;
     try {
         client = await MongoClient.connect(url, {
             useNewUrlParser: true
         });
     } catch (e) {
-        console.error(e)
+        console.error(e);
         return null;
     }
     db = client.db();
