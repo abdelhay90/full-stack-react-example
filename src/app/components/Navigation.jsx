@@ -11,7 +11,7 @@ export const Navigation = () => (
 );
 
 function mapStateToProps(state) {
-	return {};
+	return state;
 }
 
 export const ConnectedNavigation = connect(
